@@ -14,7 +14,7 @@ import java.util.List;
 public class FunctionGroupDAO {
     final static String ALL_FUNCTION_GROUPS = "select * from GROUP_FUNCTION";
 
-    DataSource ds;
+    private DataSource ds;
     FunctionGroupDAO(DataSource ds) {
         this.ds = ds;
     }

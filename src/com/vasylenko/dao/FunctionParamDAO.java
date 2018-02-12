@@ -15,7 +15,7 @@ public class FunctionParamDAO {
     final static String FUNCTION_PARAMS_BY_FUNCTION = "select * from FUN_PARAM "
             + "where ID_FUN=?";
 
-    DataSource ds;
+    private DataSource ds;
     FunctionParamDAO(DataSource ds) {
         this.ds = ds;
     }

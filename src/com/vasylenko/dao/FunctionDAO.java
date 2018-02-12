@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FunctionDAO {
-    final static String FUNCTIONS_BY_GROUP = "select * from FUNCTIONS"
+    final static String FUNCTIONS_BY_GROUP = "select * from FUNCTIONS "
             + "where ID_GROUP=?";
 
-    DataSource ds;
+    private DataSource ds;
     FunctionDAO(DataSource ds) {
         this.ds = ds;
     }
