@@ -21,7 +21,7 @@ public class FunctionDAO {
     }
 
     public List<Function> allFunctionsByGroup(FunctionGroup functionGroup) {
-        List<Function> params = new ArrayList<Function>();
+        List<Function> functions = new ArrayList<Function>();
         try {
             Connection con = ds.getConnection();
             PreparedStatement ps = con.prepareStatement(FUNCTIONS_BY_GROUP);
@@ -34,12 +34,12 @@ public class FunctionDAO {
                 fu.setDescr(rs.getString(4));
                 fu.setCtime(rs.getDate(5));
                 fu.setFunctionGroup(functionGroup);
-                params.add(fu);
+                functions.add(fu);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
-        return params;
+        return functions;
     }
 }
