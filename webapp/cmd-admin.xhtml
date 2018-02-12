@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:form id="form">
+    <p:growl id="msgs" showDetail="true" />
+<p:dataTable id="eventsDT" var="group" value="#{dtSelectionv.functionGroupList}"
+             selectionMode="single" selection="#{dtSelectionv.selectedGroup}" rowKey="#{group.id}">
+    <f:facet name="header">
+        Группы:
+    </f:facet>
+    <p:ajax event="rowSelect" listener="#{dtSelectionv.onRowGroupSelect}" update=":form2:eventsDT2" />
+    <p:column headerText="ИД">
+        <h:outputText value="#{group.id}" />
+    </p:column>
+    <p:column headerText="Название">
+        <h:outputText value="#{group.name}" />
+    </p:column>
+    <p:column headerText="Описание">
+        <h:outputText value="#{group.descr}" />
+    </p:column>
+    <p:column headerText="Дата">
+        <h:outputText value="#{group.ctime}" />
+    </p:column>
+</p:dataTable>
+</h:form>
+
+<h:form id="form2">
+    <p:dataTable id="eventsDT2" var="function" value="#{dtSelectionv.functionList}"
+                 selectionMode="single" selection="#{dtSelectionv.selectedFunction}" rowKey="#{function.id}">
+        <f:facet name="header">
+            Функции:
+        </f:facet>
+        <p:ajax event="rowSelect" listener="#{dtSelectionv.onRowFunctionSelect}" update=":form3:eventsDT3" />
+        <p:column headerText="ИД">
+            <h:outputText value="#{function.id}" />
+        </p:column>
+        <p:column headerText="ИД-Группы">
+            <h:outputText value="#{function.functionGroup.id}" />
+        </p:column>
+        <p:column headerText="Название">
+            <h:outputText value="#{function.name}" />
+        </p:column>
+        <p:column headerText="Описание">
+            <h:outputText value="#{function.descr}" />
+        </p:column>
+        <p:column headerText="Дата">
+            <h:outputText value="#{function.ctime}" />
+        </p:column>
+    </p:dataTable>
+</h:form>
+
+<h:form id="form3">
+    <p:dataTable id="eventsDT3" var="param" value="#{dtSelectionv.functionParamList}">
+        <f:facet name="header">
+            Параметры функции:
+        </f:facet>
+        <p:column headerText="ИД">
+            <h:outputText value="#{param.id}" />
+        </p:column>
+        <p:column headerText="ИД-Функции">
+            <h:outputText value="#{param.function.id}" />
+        </p:column>
+        <p:column headerText="Название">
+            <h:outputText value="#{param.name}" />
+        </p:column>
+        <p:column headerText="Описание">
+            <h:outputText value="#{param.descr}" />
+        </p:column>
+        <p:column headerText="Дата">
+            <h:outputText value="#{param.ctime}" />
+        </p:column>
+    </p:dataTable>
+</h:form>
+
+</html>
